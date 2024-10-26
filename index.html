@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Address Conversion Tools</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>IP Address Conversion Tools</h1>
+        <nav>
+            <ul>
+                <li><a href="#ipv4-to-ipv6">IPv4 to IPv6</a></li>
+                <li><a href="#ipv6-to-ipv4">IPv6 to IPv4</a></li>
+                <li><a href="#ip-to-decimal">IP to Decimal</a></li>
+                <li><a href="#decimal-to-ip">Decimal to IP</a></li>
+                <li><a href="#binary-to-ip">Binary to IP</a></li>
+                <li><a href="#hex-to-ip">Hexadecimal to IP</a></li>
+                <li><a href="#subnet-to-cidr">Subnet Mask to CIDR</a></li>
+                <li><a href="#cidr-to-range">CIDR to Range</a></li>
+                <li><a href="#range-to-cidr">Range to CIDR</a></li>
+                <li><a href="#ipv6-compress">IPv6 Compress/Expand</a></li>
+                <li><a href="#public-private-check">Public vs. Private IP Check</a></li>
+                <li><a href="#asn-lookup">ASN Lookup</a></li>
+                <li><a href="#geo-lookup">Country and City Lookup</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="ipv4-to-ipv6">
+            <h2>Convert IPv4 to IPv6</h2>
+            <input type="text" id="ipv4Input" placeholder="Enter IPv4 address">
+            <button onclick="convertIPv4ToIPv6()">Convert</button>
+            <p id="ipv6Output"></p>
+        </section>
+
+        <section id="ipv6-to-ipv4">
+            <h2>Convert IPv6 to IPv4</h2>
+            <input type="text" id="ipv6Input" placeholder="Enter IPv6 address">
+            <button onclick="convertIPv6ToIPv4()">Convert</button>
+            <p id="ipv4Output"></p>
+        </section>
+
+        <section id="ip-to-decimal">
+            <h2>Convert IP to Decimal</h2>
+            <input type="text" id="ipInput" placeholder="Enter IP address">
+            <button onclick="convertIPToDecimal()">Convert</button>
+            <p id="decimalOutput"></p>
+        </section>
+
+        <section id="decimal-to-ip">
+            <h2>Convert Decimal to IP</h2>
+            <input type="text" id="decimalInput" placeholder="Enter Decimal">
+            <button onclick="convertDecimalToIP()">Convert</button>
+            <p id="ipOutput"></p>
+        </section>
+
+        <section id="binary-to-ip">
+            <h2>Convert Binary to IP</h2>
+            <input type="text" id="binaryInput" placeholder="Enter Binary">
+            <button onclick="convertBinaryToIP()">Convert</button>
+            <p id="binaryOutput"></p>
+        </section>
+
+        <section id="hex-to-ip">
+            <h2>Convert Hexadecimal to IP</h2>
+            <input type="text" id="hexInput" placeholder="Enter Hexadecimal">
+            <button onclick="convertHexToIP()">Convert</button>
+            <p id="hexOutput"></p>
+        </section>
+
+        <section id="subnet-to-cidr">
+            <h2>Convert Subnet Mask to CIDR</h2>
+            <input type="text" id="subnetInput" placeholder="Enter Subnet Mask">
+            <button onclick="convertSubnetToCIDR()">Convert</button>
+            <p id="cidrOutput"></p>
+        </section>
+
+        <section id="cidr-to-range">
+            <h2>Convert CIDR to Range</h2>
+            <input type ="text" id="cidrInput" placeholder="Enter CIDR">
+            <button onclick="convertCIDRToRange()">Convert</button>
+            <p id="rangeOutput"></p>
+        </section>
+
+        <section id="range-to-cidr">
+            <h2>Convert Range to CIDR</h2>
+            <input type="text" id="rangeInput" placeholder="Enter Range">
+            <button onclick="convertRangeToCIDR()">Convert</button>
+            <p id="cidrOutput2"></p>
+        </section>
+
+        <section id="ipv6-compress">
+            <h2>Compress/Expand IPv6</h2>
+            <input type="text" id="ipv6CompressInput" placeholder="Enter IPv6 address">
+            <button onclick="compressIPv6()">Compress</button>
+            <button onclick="expandIPv6()">Expand</button>
+            <p id="ipv6CompressOutput"></p>
+        </section>
+
+        <section id="public-private-check">
+            <h2>Public vs. Private IP Check</h2>
+            <input type="text" id="ipCheckInput" placeholder="Enter IP address">
+            <button onclick="checkIPType()">Check</button>
+            <p id="ipCheckOutput"></p>
+        </section>
+
+        <section id="asn-lookup">
+            <h2>ASN Lookup</h2>
+            <input type="text" id="asnInput" placeholder="Enter IP address">
+            <button onclick="lookupASN()">Lookup</button>
+            <p id="asnOutput"></p>
+        </section>
+
+        <section id="geo-lookup">
+            <h2>Country and City Lookup</h2>
+            <input type="text" id="geoInput" placeholder="Enter IP address">
+            <button onclick="lookupGeo()">Lookup</button>
+            <p id="geoOutput"></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
