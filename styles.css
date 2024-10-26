@@ -293,3 +293,7 @@ p {
 .ip-loader p {
     color: var(--text-secondary);
 }
+
+.footer{
+    text-align: center;
+}
