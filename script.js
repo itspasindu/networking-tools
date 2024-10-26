@@ -259,34 +259,52 @@ function isIPInRange(ip, range) {
     return true;
 }
 
-// 12. ASN Lookup
 function lookupASN() {
-    // You need to integrate with an external API for ASN lookup
     const ip = document.getElementById('asnInput').value;
-    const asnAPI = 'https://api.ip2asn.com/api/v1/ip/' + ip;
-
-    fetch(asnAPI)
+    const output = document.getElementById('asnOutput');
+    
+    output.innerHTML = '<div class="loading"></div>';
+    
+    fetch(`https://ipapi.co/${ip}/json/`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById('asnOutput').innerHTML = `The ASN is: ${data.asn}`;
+            if(data.error) {
+                throw new Error(data.reason);
+            }
+            output.innerHTML = `
+                <div class="response">
+                    <p>ASN: ${data.asn || 'N/A'}</p>
+                    <p>Organization: ${data.org || 'N/A'}</p>
+                </div>`;
         })
         .catch(error => {
-            document.getElementById('asnOutput').innerHTML = `Error: ${error.message}`;
+            output.innerHTML = `<div class="error">Error: ${error.message}</div>`;
         });
 }
 
-// 13. Country and City Lookup
-function lookupGeo() {
-    // You need to integrate with an external API for geolocation lookup
-    const ip = document.getElementById('geoInput').value;
-    const geoAPI = 'https://api.ip2location.com/?key=demo&ip=' + ip;
 
-    fetch(geoAPI)
+function lookupGeo() {
+    const ip = document.getElementById('geoInput').value;
+    const output = document.getElementById('geoOutput');
+    
+    output.innerHTML = '<div class="loading"></div>';
+    
+    fetch(`http://ip-api.com/json/${ip}`)
         .then(response => response.json())
         .then(data => {
- document.getElementById('geoOutput').innerHTML = `The country is: ${data.country_name} and the city is: ${data.city_name}`;
+            if(data.status === 'fail') {
+                throw new Error(data.message);
+            }
+            output.innerHTML = `
+                <div class="response">
+                    <p>Country: ${data.country}</p>
+                    <p>City: ${data.city}</p>
+                    <p>Region: ${data.regionName}</p>
+                    <p>ISP: ${data.isp}</p>
+                    <p>Timezone: ${data.timezone}</p>
+                </div>`;
         })
         .catch(error => {
-            document.getElementById('geoOutput').innerHTML = `Error: ${error.message}`;
+            output.innerHTML = `<div class="error">Error: ${error.message}</div>`;
         });
 }
