@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script>
 </head>
 <body>
     <header>
@@ -31,6 +37,44 @@
     </header>
 
     <main>
+        <section id="ip-details" class="full-width-section">
+            <h2>Your IP Details</h2>
+            <div class="ip-card">
+                <div class="ip-loader" id="ipLoader">
+                    <div class="loading"></div>
+                    <p>Detecting your IP details...</p>
+                </div>
+                <div class="ip-info" id="ipInfo">
+                    <div class="ip-info-grid">
+                        <div class="info-item">
+                            <span class="label">IP Address</span>
+                            <span class="value" id="currentIp">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Location</span>
+                            <span class="value" id="location">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">ISP</span>
+                            <span class="value" id="isp">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Country</span>
+                            <span class="value" id="country">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Region</span>
+                            <span class="value" id="region">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Timezone</span>
+                            <span class="value" id="timezone">-</span>
+                        </div>
+                    </div>
+                    <div id="map" class="ip-map"></div>
+                </div>
+            </div>
+        </section>
         <section id="ipv4-to-ipv6">
             <h2>Convert IPv4 to IPv6</h2>
             <input type="text" id="ipv4Input" placeholder="Enter IPv4 address">

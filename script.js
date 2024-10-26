@@ -308,3 +308,53 @@ function lookupGeo() {
             output.innerHTML = `<div class="error">Error: ${error.message}</div>`;
         });
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    detectIPDetails();
+});
+
+async function detectIPDetails() {
+    const ipLoader = document.getElementById('ipLoader');
+    const ipInfo = document.getElementById('ipInfo');
+    
+    try {
+
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        
+
+        const detailsResponse = await fetch(`http://ip-api.com/json/${ipData.ip}`);
+        const details = await detailsResponse.json();
+        
+        document.getElementById('currentIp').textContent = ipData.ip;
+        document.getElementById('location').textContent = `${details.city}`;
+        document.getElementById('country').textContent = `${details.country} (${details.countryCode})`;
+        document.getElementById('region').textContent = details.regionName;
+        document.getElementById('timezone').textContent = details.timezone;
+        document.getElementById('isp').textContent = details.isp;
+
+        initMap(details.lat, details.lon);
+
+
+        ipLoader.style.display = 'none';
+        ipInfo.style.display = 'block';
+
+    } catch (error) {
+        ipLoader.innerHTML = `
+            <div class="error">
+                <p>Error detecting IP details: ${error.message}</p>
+                <button onclick="detectIPDetails()">Try Again</button>
+            </div>
+        `;
+    }
+}
+
+function initMap(lat, lon) {
+
+    const map = L.map('map').setView([lat, lon], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    L.marker([lat, lon]).addTo(map);
+}
